@@ -5,158 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manzar Clothing</title>
     <style>
-        /* Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* Body */
+        /* Global Styles */
         body {
+            margin: 0;
+            padding: 0;
             font-family: 'Georgia', serif;
-            background-color: #f8f4f0;
             color: #1a1a1a;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background-color: #fff;
-            padding: 20px 50px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #ccc;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #1a1a1a;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #7a5c61;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: url('https://source.unsplash.com/1600x600/?fashion,clothes,calm') no-repeat center center/cover;
-            height: 60vh;
+            height: 100vh;
+            background: url('assets/forest.gif') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            position: relative;
+            overflow-x: hidden;
         }
 
-        .hero h1 {
-            font-size: 3em;
-            background-color: rgba(0,0,0,0.45);
-            padding: 25px 40px;
-            border-radius: 12px;
-            letter-spacing: 1px;
+        h1 {
+            font-size: 4rem;
+            color: #2e8b57; /* Dark green */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
-        /* Product Categories */
-        .categories {
-            padding: 60px 50px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 35px;
+        /* Products Section */
+        #products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .category {
-            background-color: #fff;
-            border: 1px solid #eee;
-            padding: 25px;
+        .product {
+            margin: 10px;
+            padding: 20px;
             text-align: center;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .category:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .category img {
-            max-width: 100%;
+            width: 200px;
+            background-color: white;
             border-radius: 8px;
-            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .category img:hover {
-            transform: scale(1.05);
+        .product:hover {
+            transform: translateY(-10px);
         }
 
-        .category h3 {
-            margin-top: 18px;
-            font-size: 1.3em;
-            color: #4a3f3d;
+        .product img {
+            width: 100%;
+            border-radius: 8px;
         }
 
-        /* Footer */
-        footer {
+        .product h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Sidebar Menu */
+        #menu {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+            z-index: 1000;
+        }
+
+        #menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #menu ul li {
+            margin: 10px 0;
             text-align: center;
-            padding: 40px;
-            border-top: 1px solid #ddd;
-            margin-top: 60px;
-            color: #7a5c61;
-            font-style: italic;
         }
+
+        #menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        #menu ul li a:hover {
+            color: #2e8b57; /* Dark green */
+        }
+
+        #menuToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            cursor: pointer;
+            font-size: 2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Make sure products section appears below hero */
+        #productsSection {
+            padding-top: 100vh; /* full screen height for landing */
+        }
+
     </style>
 </head>
 <body>
+    <h1>Manzar Clothing</h1>
 
-<header>
-    <nav>
+    <button id="menuToggle" onclick="toggleMenu()">☰</button>
+    <div id="menu">
         <ul>
-            <li><a href="#Shirts">Shirts</a></li>
-            <li><a href="#Hoodies">Hoodies</a></li>
-            <li><a href="#Jeans">Jeans</a></li>
-            <li><a href="#Sweats">Sweats</a></li>
-            <li><a href="#Outerwear">Outerwear</a></li>
+            <li><a href="#" onclick="filterProducts('Shirts')">Shirts</a></li>
+            <li><a href="#" onclick="filterProducts('Hoodies')">Hoodies</a></li>
+            <li><a href="#" onclick="filterProducts('Jeans')">Jeans</a></li>
+            <li><a href="#" onclick="filterProducts('Sweats')">Sweats</a></li>
+            <li><a href="#" onclick="filterProducts('Outerwear')">Outerwear</a></li>
+            <li><a href="#" onclick="filterProducts('All')">All</a></li>
         </ul>
-    </nav>
-</header>
+    </div>
 
-<section class="hero">
-    <h1>Welcome to Manzar Clothing</h1>
-</section>
+    <div id="productsSection">
+        <div id="products"></div>
+    </div>
 
-<section class="categories">
-    <div class="category" id="Shirts">
-        <img src="https://source.unsplash.com/400x400/?tshirt,fashion,calm" alt="Shirts">
-        <h3>Shirts</h3>
-    </div>
-    <div class="category" id="Hoodies">
-        <img src="https://source.unsplash.com/400x400/?hoodie,fashion,calm" alt="Hoodies">
-        <h3>Hoodies</h3>
-    </div>
-    <div class="category" id="Jeans">
-        <img src="https://source.unsplash.com/400x400/?jeans,fashion,calm" alt="Jeans">
-        <h3>Jeans</h3>
-    </div>
-    <div class="category" id="Sweats">
-        <img src="https://source.unsplash.com/400x400/?sweatshirt,fashion,calm" alt="Sweats">
-        <h3>Sweats</h3>
-    </div>
-    <div class="category" id="Outerwear">
-        <img src="https://source.unsplash.com/400x400/?jacket,fashion,calm" alt="Outerwear">
-        <h3>Outerwear</h3>
-    </div>
-</section>
+    <script>
+        const products = [
+            { name: 'Classic T-Shirt', category: 'Shirts', image: 'https://via.placeholder.com/200x200.png?text=Shirt' },
+            { name: 'Stylish Hoodie', category: 'Hoodies', image: 'https://via.placeholder.com/200x200.png?text=Hoodie' },
+            { name: 'Slim Fit Jeans', category: 'Jeans', image: 'https://via.placeholder.com/200x200.png?text=Jeans' },
+            { name: 'Cozy Sweats', category: 'Sweats', image: 'https://via.placeholder.com/200x200.png?text=Sweats' },
+            { name: 'Warm Outerwear', category: 'Outerwear', image: 'https://via.placeholder.com/200x200.png?text=Outerwear' },
+            // Add more products if needed
+        ];
 
-<footer>
-    &copy; 2025 Manzar Clothing. All rights reserved.
-</footer>
+        const productsContainer = document.getElementById('products');
 
+        function displayProducts(filteredProducts) {
+            productsContainer.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>$100</p>
+                `;
+                productsContainer.appendChild(productElement);
+            });
+        }
+
+        function filterProducts(category) {
+            if (category === 'All') {
+                displayProducts(products);
+            } else {
+                const filtered = products.filter(product => product.category === category);
+                displayProducts(filtered);
+            }
+            window.scrollTo({ top: document.getElementById('productsSection').offsetTop, behavior: 'smooth' });
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Initialize
+        displayProducts(products);
+    </script>
 </body>
 </html>
