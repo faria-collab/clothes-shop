@@ -8,42 +8,45 @@
         /* Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* Body */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fdfdfd;
-            color: #111;
+            font-family: 'Georgia', serif;
+            background-color: #f8f4f0;
+            color: #1a1a1a;
             line-height: 1.6;
         }
 
-        /* Header / Navigation */
+        /* Header */
         header {
             background-color: #fff;
             padding: 20px 50px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav a {
             text-decoration: none;
-            color: #111;
-            font-weight: 600;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #555;
+            color: #7a5c61;
         }
 
         /* Hero Section */
         .hero {
-            background: url('https://source.unsplash.com/1600x600/?fashion,clothes') no-repeat center center/cover;
+            background: url('https://source.unsplash.com/1600x600/?fashion,clothes,calm') no-repeat center center/cover;
             height: 60vh;
             display: flex;
             justify-content: center;
@@ -55,50 +58,58 @@
 
         .hero h1 {
             font-size: 3em;
-            background-color: rgba(0,0,0,0.4);
-            padding: 20px;
-            border-radius: 10px;
+            background-color: rgba(0,0,0,0.45);
+            padding: 25px 40px;
+            border-radius: 12px;
+            letter-spacing: 1px;
         }
 
         /* Product Categories */
         .categories {
-            padding: 50px;
+            padding: 60px 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
         }
 
         .category {
             background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
+            border: 1px solid #eee;
+            padding: 25px;
             text-align: center;
-            border-radius: 10px;
+            border-radius: 12px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-7px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .category img {
             max-width: 100%;
-            border-radius: 5px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .category img:hover {
+            transform: scale(1.05);
         }
 
         .category h3 {
-            margin-top: 15px;
-            font-size: 1.2em;
+            margin-top: 18px;
+            font-size: 1.3em;
+            color: #4a3f3d;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             border-top: 1px solid #ddd;
-            margin-top: 50px;
-            color: #555;
+            margin-top: 60px;
+            color: #7a5c61;
+            font-style: italic;
         }
     </style>
 </head>
@@ -122,23 +133,23 @@
 
 <section class="categories">
     <div class="category" id="Shirts">
-        <img src="https://source.unsplash.com/400x400/?tshirt,fashion" alt="Shirts">
+        <img src="https://source.unsplash.com/400x400/?tshirt,fashion,calm" alt="Shirts">
         <h3>Shirts</h3>
     </div>
     <div class="category" id="Hoodies">
-        <img src="https://source.unsplash.com/400x400/?hoodie,fashion" alt="Hoodies">
+        <img src="https://source.unsplash.com/400x400/?hoodie,fashion,calm" alt="Hoodies">
         <h3>Hoodies</h3>
     </div>
     <div class="category" id="Jeans">
-        <img src="https://source.unsplash.com/400x400/?jeans,fashion" alt="Jeans">
+        <img src="https://source.unsplash.com/400x400/?jeans,fashion,calm" alt="Jeans">
         <h3>Jeans</h3>
     </div>
     <div class="category" id="Sweats">
-        <img src="https://source.unsplash.com/400x400/?sweatshirt,fashion" alt="Sweats">
+        <img src="https://source.unsplash.com/400x400/?sweatshirt,fashion,calm" alt="Sweats">
         <h3>Sweats</h3>
     </div>
     <div class="category" id="Outerwear">
-        <img src="https://source.unsplash.com/400x400/?jacket,fashion" alt="Outerwear">
+        <img src="https://source.unsplash.com/400x400/?jacket,fashion,calm" alt="Outerwear">
         <h3>Outerwear</h3>
     </div>
 </section>
