@@ -1,198 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manzar Clothing</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Georgia', serif;
-            color: #1a1a1a;
-            height: 100vh;
-            background: url('assets/forest.gif') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manzar Clothing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
 
-        h1 {
-            font-size: 4rem;
-            color: #2e8b57; /* Dark green */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Products Section */
-        #products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 50px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    body {
+      font-family: 'Playfair Display', serif;
+      background: url('assets/Lake%20evenings.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: #0b3d2e;
+      overflow-x: hidden;
+    }
 
-        .product {
-            margin: 10px;
-            padding: 20px;
-            text-align: center;
-            width: 200px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+    header {
+      text-align: center;
+      padding: 150px 20px 100px;
+      background: rgba(255, 255, 255, 0.4);
+    }
 
-        .product:hover {
-            transform: translateY(-10px);
-        }
+    header h1 {
+      font-size: 4rem;
+      letter-spacing: 2px;
+    }
 
-        .product img {
-            width: 100%;
-            border-radius: 8px;
-        }
+    /* Menu button */
+    .menu {
+      position: fixed;
+      top: 30px;
+      right: 40px;
+      cursor: pointer;
+      z-index: 10;
+    }
 
-        .product h3 {
-            margin: 10px 0;
-            font-size: 1.2rem;
-            color: #333;
-        }
+    .menu div {
+      width: 35px;
+      height: 4px;
+      background-color: #0b3d2e;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
 
-        .product p {
-            font-size: 1rem;
-            color: #555;
-        }
+    /* Dropdown */
+    .dropdown {
+      position: fixed;
+      top: 80px;
+      right: 40px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      padding: 10px 0;
+      display: none;
+      flex-direction: column;
+      width: 150px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-        /* Sidebar Menu */
-        #menu {
-            position: fixed;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            z-index: 1000;
-        }
+    .dropdown a {
+      text-decoration: none;
+      color: #0b3d2e;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
 
-        #menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .dropdown a:hover {
+      background-color: rgba(11,61,46,0.1);
+    }
 
-        #menu ul li {
-            margin: 10px 0;
-            text-align: center;
-        }
+    /* Products grid */
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 50px;
+      background: rgba(255,255,255,0.7);
+    }
 
-        #menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
+    .product {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
 
-        #menu ul li a:hover {
-            color: #2e8b57; /* Dark green */
-        }
+    .product:hover {
+      transform: scale(1.05);
+    }
 
-        #menuToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            cursor: pointer;
-            font-size: 2rem;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7);
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-        }
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
 
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
+    .product h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
 
-        /* Make sure products section appears below hero */
-        #productsSection {
-            padding-top: 100vh; /* full screen height for landing */
-        }
-
-    </style>
+    .product p {
+      font-size: 1.1rem;
+      color: #0b3d2e;
+    }
+  </style>
 </head>
 <body>
+
+  <div class="menu" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div class="dropdown" id="dropdown">
+    <a href="#" onclick="filterProducts('all')">All</a>
+    <a href="#" onclick="filterProducts('shirts')">Shirts</a>
+    <a href="#" onclick="filterProducts('hoodies')">Hoodies</a>
+    <a href="#" onclick="filterProducts('jeans')">Jeans</a>
+    <a href="#" onclick="filterProducts('sweats')">Sweats</a>
+    <a href="#" onclick="filterProducts('outerwear')">Outerwear</a>
+  </div>
+
+  <header>
     <h1>Manzar Clothing</h1>
+  </header>
 
-    <button id="menuToggle" onclick="toggleMenu()">☰</button>
-    <div id="menu">
-        <ul>
-            <li><a href="#" onclick="filterProducts('Shirts')">Shirts</a></li>
-            <li><a href="#" onclick="filterProducts('Hoodies')">Hoodies</a></li>
-            <li><a href="#" onclick="filterProducts('Jeans')">Jeans</a></li>
-            <li><a href="#" onclick="filterProducts('Sweats')">Sweats</a></li>
-            <li><a href="#" onclick="filterProducts('Outerwear')">Outerwear</a></li>
-            <li><a href="#" onclick="filterProducts('All')">All</a></li>
-        </ul>
+  <section id="product-list">
+    <div class="product" data-category="shirts">
+      <img src="https://via.placeholder.com/250x250.png?text=Shirt" alt="Shirt">
+      <h3>Classic Shirt</h3>
+      <p>$100</p>
     </div>
-
-    <div id="productsSection">
-        <div id="products"></div>
+    <div class="product" data-category="hoodies">
+      <img src="https://via.placeholder.com/250x250.png?text=Hoodie" alt="Hoodie">
+      <h3>Cozy Hoodie</h3>
+      <p>$100</p>
     </div>
+    <div class="product" data-category="jeans">
+      <img src="https://via.placeholder.com/250x250.png?text=Jeans" alt="Jeans">
+      <h3>Denim Jeans</h3>
+      <p>$100</p>
+    </div>
+    <div class="product" data-category="sweats">
+      <img src="https://via.placeholder.com/250x250.png?text=Sweats" alt="Sweats">
+      <h3>Comfort Sweats</h3>
+      <p>$100</p>
+    </div>
+    <div class="product" data-category="outerwear">
+      <img src="https://via.placeholder.com/250x250.png?text=Jacket" alt="Outerwear">
+      <h3>Stylish Jacket</h3>
+      <p>$100</p>
+    </div>
+  </section>
 
-    <script>
-        const products = [
-            { name: 'Classic T-Shirt', category: 'Shirts', image: 'https://via.placeholder.com/200x200.png?text=Shirt' },
-            { name: 'Stylish Hoodie', category: 'Hoodies', image: 'https://via.placeholder.com/200x200.png?text=Hoodie' },
-            { name: 'Slim Fit Jeans', category: 'Jeans', image: 'https://via.placeholder.com/200x200.png?text=Jeans' },
-            { name: 'Cozy Sweats', category: 'Sweats', image: 'https://via.placeholder.com/200x200.png?text=Sweats' },
-            { name: 'Warm Outerwear', category: 'Outerwear', image: 'https://via.placeholder.com/200x200.png?text=Outerwear' },
-        ];
+  <script>
+    const dropdown = document.getElementById('dropdown');
 
-        const productsContainer = document.getElementById('products');
+    function toggleMenu() {
+      dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
+    }
 
-        function displayProducts(filteredProducts) {
-            productsContainer.innerHTML = '';
-            filteredProducts.forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.classList.add('product');
-                productElement.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>$100</p>
-                `;
-                productsContainer.appendChild(productElement);
-            });
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        if (category === 'all' || product.dataset.category === category) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
         }
+      });
+      dropdown.style.display = 'none';
+    }
+  </script>
 
-        function filterProducts(category) {
-            if (category === 'All') {
-                displayProducts(products);
-            } else {
-                const filtered = products.filter(product => product.category === category);
-                displayProducts(filtered);
-            }
-            window.scrollTo({ top: document.getElementById('productsSection').offsetTop, behavior: 'smooth' });
-        }
-
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Initialize
-        displayProducts(products);
-    </script>
 </body>
 </html>
